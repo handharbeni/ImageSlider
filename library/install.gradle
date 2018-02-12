@@ -9,7 +9,7 @@ install {
                 groupId 'illiyin.mhandharbeni.imageslider' // CREATE A GROUP ID FOR YOUR LIBRARY
                 artifactId 'library' // THE NAME OF YOUR MODULE
 
-                name 'httpcalllibrary' // YOUR LIBRARY NAME
+                name 'imageslider' // YOUR LIBRARY NAME
                 description 'Simple Slider on android' // YOUR LIBRARY DESCRIPTION
                 url 'https://github.com/handharbeni/ImageSlider' // YOUR SITE
 
