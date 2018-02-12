@@ -18,12 +18,6 @@ public abstract class BaseTransformer implements ViewPagerEx.PageTransformer {
 
     private BaseAnimationInterface mCustomAnimationInterface;
 
-    /**
-     * Called each {@link #transformPage(View, float)}.
-     *
-     * @param view
-     * @param position
-     */
     protected abstract void onTransform(View view, float position);
 
     private HashMap<View,ArrayList<Float>> h = new HashMap<View, ArrayList<Float>>();
@@ -35,31 +29,14 @@ public abstract class BaseTransformer implements ViewPagerEx.PageTransformer {
         onPostTransform(view, position);
     }
 
-    /**
-     * If the position offset of a fragment is less than negative one or greater than one, returning true will set the
-     * visibility of the fragment to {@link View#GONE}. Returning false will force the fragment to {@link View#VISIBLE}.
-     *
-     * @return
-     */
     protected boolean hideOffscreenPages() {
         return true;
     }
 
-    /**
-     * Indicates if the default animations of the view pager should be used.
-     *
-     * @return
-     */
     protected boolean isPagingEnabled() {
         return false;
     }
 
-    /**
-     * Called each {@link #transformPage(View, float)} before {{@link #onTransform(View, float)} is called.
-     *
-     * @param view
-     * @param position
-     */
     protected void onPreTransform(View view, float position) {
         final float width = view.getWidth();
 
@@ -111,12 +88,7 @@ public abstract class BaseTransformer implements ViewPagerEx.PageTransformer {
         }
     }
     boolean isApp,isDis;
-    /**
-     * Called each {@link #transformPage(View, float)} call after {@link #onTransform(View, float)} is finished.
-     *
-     * @param view
-     * @param position
-     */
+
     protected void onPostTransform(View view, float position) {
         if(mCustomAnimationInterface != null){
             if(position == -1 || position == 1){

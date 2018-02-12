@@ -1,0 +1,38 @@
+apply plugin: 'com.github.dcendents.android-maven'
+group = 'illiyin.mhandharbeni.imageslider' // CREATE A GROUP ID FOR YOUR LIBRARY
+
+install {
+    repositories.mavenInstaller {
+        pom {
+            project {
+                packaging 'aar'
+                groupId 'illiyin.mhandharbeni.imageslider' // CREATE A GROUP ID FOR YOUR LIBRARY
+                artifactId 'library' // THE NAME OF YOUR MODULE
+
+                name 'httpcalllibrary' // YOUR LIBRARY NAME
+                description 'Simple Slider on android' // YOUR LIBRARY DESCRIPTION
+                url 'https://github.com/handharbeni/ImageSlider' // YOUR SITE
+
+                licenses {
+                    license {
+                        name 'The Apache Software License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+                developers {
+                    developer {
+                        id 'mhandharbeni' //YOUR ID
+                        name 'Muhammad Handharbeni' //YOUR NAME
+                        email 'mhandharbeni@gmail.com' //YOUR EMAIL
+                    }
+                }
+                scm {
+                    connection 'https://github.com/handharbeni/ImageSlider.git' // YOUR GIT REPO
+                    developerConnection 'https://github.com/handharbeni/ImageSlider.git' // YOUR GIT REPO
+                    url 'https://github.com/handharbeni/ImageSlider' // YOUR SITE
+
+                }
+            }
+        }
+    }
+}

@@ -84,9 +84,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
     private float mUnSelectedPadding_Top;
     private float mUnSelectedPadding_Bottom;
 
-    /**
-     * Put all the indicators into a ArrayList, so we can remove them easily.
-     */
     private ArrayList<ImageView> mIndicators = new ArrayList<ImageView>();
 
 
@@ -167,11 +164,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         Oval,Rectangle
     }
 
-    /**
-     * if you are using the default indicator, this method will help you to set the shape of
-     * indicator, there are two kind of shapes you  can set, oval and rect.
-     * @param shape
-     */
     public void setDefaultIndicatorShape(Shape shape){
         if(mUserSetSelectedIndicatorResId == 0){
             if(shape == Shape.Oval){
@@ -190,12 +182,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         resetDrawable();
     }
 
-
-    /**
-     * Set Indicator style.
-     * @param selected page selected drawable
-     * @param unselected page unselected drawable
-     */
     public void setIndicatorStyleResource(int selected, int unselected){
         mUserSetSelectedIndicatorResId = selected;
         mUserSetUnSelectedIndicatorResId = unselected;
@@ -213,12 +199,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         resetDrawable();
     }
 
-    /**
-     * if you are using the default indicator , this method will help you to set the selected status and
-     * the unselected status color.
-     * @param selectedColor
-     * @param unselectedColor
-     */
     public void setDefaultIndicatorColor(int selectedColor,int unselectedColor){
         if(mUserSetSelectedIndicatorResId == 0){
             mSelectedGradientDrawable.setColor(selectedColor);
@@ -274,10 +254,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         return dp * this.getContext().getResources().getDisplayMetrics().density;
     }
 
-    /**
-     * set the visibility of indicator.
-     * @param visibility
-     */
     public void setIndicatorVisibility(IndicatorVisibility visibility){
         if(visibility == IndicatorVisibility.Visible){
             setVisibility(View.VISIBLE);
@@ -287,9 +263,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         resetDrawable();
     }
 
-    /**
-     * clear self means unregister the dataset observer and remove all the child views(indicators).
-     */
     public void destroySelf(){
         if(mPager == null || mPager.getAdapter() == null){
             return;
@@ -302,10 +275,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         removeAllViews();
     }
 
-    /**
-     * bind indicator with viewpagerEx.
-     * @param pager
-     */
     public void setViewPager(ViewPagerEx pager){
         if(pager.getAdapter() == null){
             throw new IllegalStateException("Viewpager does not have adapter instance");
@@ -327,9 +296,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         }
     }
 
-    /**
-     * redraw the indicators.
-     */
     public void redraw(){
         mItemCount = getShouldDrawCount();
         mPreviousSelectedIndicator = null;
@@ -351,10 +317,6 @@ public class PagerIndicator extends LinearLayout implements ViewPagerEx.OnPageCh
         setItemAsSelected(mPreviousSelectedPosition);
     }
 
-    /**
-     * since we used a adapter wrapper, so we can't getCount directly from wrapper.
-     * @return
-     */
     private int getShouldDrawCount(){
         if(mPager.getAdapter() instanceof InfinitePagerAdapter){
             return ((InfinitePagerAdapter)mPager.getAdapter()).getRealCount();

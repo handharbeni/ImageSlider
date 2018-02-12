@@ -211,12 +211,6 @@ public class SliderLayout extends RelativeLayout{
         startAutoCycle(mSliderDuration, mSliderDuration, mAutoRecover);
     }
 
-    /**
-     * start auto cycle.
-     * @param delay delay time
-     * @param duration animation duration time.
-     * @param autoRecover if recover after user touches the slider.
-     */
     public void startAutoCycle(long delay,long duration,boolean autoRecover){
         if(mCycleTimer != null) mCycleTimer.cancel();
         if(mCycleTask != null) mCycleTask.cancel();
@@ -251,10 +245,6 @@ public class SliderLayout extends RelativeLayout{
         }
     }
 
-    /**
-     * set the duration between two slider changes. the duration value must >= 500
-     * @param duration
-     */
     public void setDuration(long duration){
         if(duration >= 500){
             mSliderDuration = duration;
@@ -321,24 +311,12 @@ public class SliderLayout extends RelativeLayout{
         return false;
     }
 
-    /**
-     * set ViewPager transformer.
-     * @param reverseDrawingOrder
-     * @param transformer
-     */
     public void setPagerTransformer(boolean reverseDrawingOrder,BaseTransformer transformer){
         mViewPagerTransformer = transformer;
         mViewPagerTransformer.setCustomAnimationInterface(mCustomAnimation);
         mViewPager.setPageTransformer(reverseDrawingOrder,mViewPagerTransformer);
     }
 
-
-
-    /**
-     * set the duration between two slider changes.
-     * @param period
-     * @param interpolator
-     */
     public void setSliderTransformDuration(int period,Interpolator interpolator){
         try{
             Field mScroller = ViewPagerEx.class.getDeclaredField("mScroller");
@@ -533,10 +511,6 @@ public class SliderLayout extends RelativeLayout{
         return null;
     }
 
-    /**
-     * get the current item position
-     * @return
-     */
     public int getCurrentPosition(){
 
         if(getRealAdapter() == null)
@@ -546,10 +520,6 @@ public class SliderLayout extends RelativeLayout{
 
     }
 
-    /**
-     * get current slider.
-     * @return
-     */
     public BaseSliderView getCurrentSlider(){
 
         if(getRealAdapter() == null)
@@ -559,34 +529,19 @@ public class SliderLayout extends RelativeLayout{
         int realCount = mViewPager.getCurrentItem() % count;
         return  getRealAdapter().getSliderView(realCount);
     }
-
-    /**
-     * remove  the slider at the position. Notice: It's a not perfect method, a very small bug still exists.
-     */
     public void removeSliderAt(int position){
         if(getRealAdapter()!=null){
             getRealAdapter().removeSliderAt(position);
             mViewPager.setCurrentItem(mViewPager.getCurrentItem(),false);
         }
     }
-
-    /**
-     * remove all the sliders. Notice: It's a not perfect method, a very small bug still exists.
-     */
     public void removeAllSliders(){
         if(getRealAdapter()!=null){
             int count = getRealAdapter().getCount();
             getRealAdapter().removeAllSliders();
-            //a small bug, but fixed by this trick.
-            //bug: when remove adapter's all the sliders.some caching slider still alive.
             mViewPager.setCurrentItem(mViewPager.getCurrentItem() +  count,false);
         }
     }
-
-    /**
-     *set current slider
-     * @param position
-     */
     public void setCurrentPosition(int position, boolean smooth) {
         if (getRealAdapter() == null)
             throw new IllegalStateException("You did not set a slider adapter");
@@ -602,9 +557,6 @@ public class SliderLayout extends RelativeLayout{
         setCurrentPosition(position, true);
     }
 
-    /**
-     * move to prev slide.
-     */
     public void movePrevPosition(boolean smooth) {
 
         if (getRealAdapter() == null)
@@ -617,9 +569,6 @@ public class SliderLayout extends RelativeLayout{
         movePrevPosition(true);
     }
 
-    /**
-     * move to next slide.
-     */
     public void moveNextPosition(boolean smooth) {
 
         if (getRealAdapter() == null)

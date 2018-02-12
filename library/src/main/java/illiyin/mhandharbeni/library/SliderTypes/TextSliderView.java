@@ -11,9 +11,6 @@ import android.widget.TextView;
 
 import illiyin.mhandharbeni.library.R;
 
-/**
- * This is a slider with a description TextView.
- */
 public class TextSliderView extends BaseSliderView{
     public TextSliderView(Context context) {
         super(context);

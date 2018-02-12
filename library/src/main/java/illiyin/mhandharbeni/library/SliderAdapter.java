@@ -12,9 +12,6 @@ import java.util.ArrayList;
 
 import illiyin.mhandharbeni.library.SliderTypes.BaseSliderView;
 
-/**
- * A slider adapter
- */
 public class SliderAdapter extends PagerAdapter implements BaseSliderView.ImageLoadListener{
 
     private Context mContext;
@@ -22,7 +19,7 @@ public class SliderAdapter extends PagerAdapter implements BaseSliderView.ImageL
 
     public SliderAdapter(Context context){
         mContext = context;
-        mImageContents = new ArrayList<BaseSliderView>();
+        mImageContents = new ArrayList<>();
     }
 
     public <T extends BaseSliderView> void addSlider(T slider){
@@ -91,11 +88,6 @@ public class SliderAdapter extends PagerAdapter implements BaseSliderView.ImageL
 
     }
 
-    /**
-     * When image download error, then remove.
-     * @param result
-     * @param target
-     */
     @Override
     public void onEnd(boolean result, BaseSliderView target) {
         if(target.isErrorDisappear() == false || result == true){

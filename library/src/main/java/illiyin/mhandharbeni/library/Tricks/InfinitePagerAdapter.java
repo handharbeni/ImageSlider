@@ -29,14 +29,9 @@ public class InfinitePagerAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        // warning: scrolling to very high values (1,000,000+) results in
-        // strange drawing behaviour
         return Integer.MAX_VALUE;
     }
 
-    /**
-     * @return the {@link #getCount()} result of the wrapped adapter
-     */
     public int getRealCount() {
         return adapter.getCount();
     }
@@ -67,10 +62,6 @@ public class InfinitePagerAdapter extends PagerAdapter {
         adapter.destroyItem(container, virtualPosition, object);
     }
 
-    /*
-     * Delegate rest of methods directly to the inner adapter.
-     */
-
     @Override
     public void finishUpdate(ViewGroup container) {
         adapter.finishUpdate(container);
@@ -95,10 +86,6 @@ public class InfinitePagerAdapter extends PagerAdapter {
     public void startUpdate(ViewGroup container) {
         adapter.startUpdate(container);
     }
-
-    /*
-     * End delegation
-     */
 
     private void debug(String message) {
         if (DEBUG) {

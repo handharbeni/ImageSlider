@@ -10,11 +10,6 @@ import android.widget.ImageView;
 
 import illiyin.mhandharbeni.library.R;
 
-/**
- * a simple slider view, which just show an image. If you want to make your own slider view,
- *
- * just extend BaseSliderView, and implement getView() method.
- */
 public class DefaultSliderView extends BaseSliderView{
 
     public DefaultSliderView(Context context) {
